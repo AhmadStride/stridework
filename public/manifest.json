@@ -1,13 +1,20 @@
 {
-  "name": "Agency Dash",
-  "short_name": "Agency",
-  "description": "Agency client and task management",
+  "name": "StrideWork",
+  "short_name": "StrideWork",
+  "description": "Client and task management",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
-  "background_color": "#030712",
-  "theme_color": "#111827",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
   "orientation": "portrait",
   "icons": [
+    {
+      "src": "/logo-icon.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "any"
+    },
     {
       "src": "/icons/icon-192.png",
       "sizes": "192x192",
