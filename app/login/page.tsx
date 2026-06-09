@@ -33,7 +33,7 @@ export default function LoginPage() {
               <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
             </svg>
           </div>
-          <h1 className="text-2xl font-bold tracking-tight">Stridestack</h1>
+          <h1 className="text-2xl font-bold tracking-tight">StrideWork</h1>
           <p className="text-sm text-muted-foreground mt-1">Sign in to your workspace</p>
         </div>
 

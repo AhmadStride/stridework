@@ -109,7 +109,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
         {/* Bottom branding */}
         <div className="px-6 py-4 border-t border-gray-100">
-          <p className="text-xs text-gray-400">© 2025 Stridestack</p>
+          <p className="text-xs text-gray-400">© 2025 StrideWork</p>
         </div>
       </aside>
 
