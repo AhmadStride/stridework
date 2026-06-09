@@ -4,6 +4,14 @@
 
 @custom-variant dark (&:is(.dark *));
 
+:root {
+  --font-geist: 'Geist', system-ui, sans-serif;
+}
+
+html, body, * {
+  font-family: var(--font-geist);
+}
+
 * {
   -webkit-tap-highlight-color: transparent;
   box-sizing: border-box;
