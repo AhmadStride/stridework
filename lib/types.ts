@@ -1,9 +1,7 @@
-export type ClientStatus = 'Active' | 'On Hold' | 'Completed'
-export type EngagementType = 'Retainer' | 'Project'
-export type EngagementVertical = 'Creative' | 'Ads' | 'Tech'
-export type EngagementStatus = 'Active' | 'Completed'
+export type ClientStatus = 'Active' | 'On Hold' | 'Completed' | 'Closed'
+export type GoalVertical = 'Ads' | 'Tech' | 'Creative'
 export type TaskPriority = 'High' | 'Medium' | 'Low'
-export type TaskStatus = 'To Do' | 'In Progress' | 'Done'
+export type TaskStatus = 'To Do' | 'In Progress' | 'In Review' | 'Approved' | 'Rejected'
 
 export interface Client {
   id: string
@@ -15,26 +13,45 @@ export interface Client {
   created_at: string
 }
 
-export interface Engagement {
+export interface Goal {
   id: string
   client_id: string
+  vertical: GoalVertical
   name: string
-  type: EngagementType
-  vertical: EngagementVertical
-  status: EngagementStatus
+  description: string
+  start_date: string | null
+  end_date: string | null
+  created_at: string
+  tasks?: Task[]
+}
+
+export interface TeamMember {
+  id: string
+  name: string
+  email: string
+  role: string
   created_at: string
 }
 
 export interface Task {
   id: string
   title: string
-  assigned_to: string
   due_date: string | null
   priority: TaskPriority
   status: TaskStatus
   client_id: string | null
-  engagement_id: string | null
+  goal_id: string | null
   created_at: string
-  client?: Client
-  engagement?: Engagement
+  client?: { id: string; name: string } | null
+  goal?: { id: string; name: string } | null
+  assignees?: TeamMember[]
+}
+
+export interface FollowUp {
+  id: string
+  task_id: string
+  author_name: string
+  content: string
+  is_rejection: boolean
+  created_at: string
 }

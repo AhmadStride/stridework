@@ -9,21 +9,34 @@ export default async function DashboardPage() {
   if (!user) redirect('/login')
 
   const today = new Date().toISOString().split('T')[0]
-  const [{ data: clients }, { data: tasks }, { data: engagements }] = await Promise.all([
-    supabase.from('clients').select('*').order('created_at', { ascending: false }),
-    supabase.from('tasks').select('*, client:clients(name), engagement:engagements(name)').neq('status', 'Done').order('due_date', { ascending: true, nullsFirst: false }),
-    supabase.from('engagements').select('*').eq('status', 'Active'),
+
+  const [{ data: clients }, { data: rawTasks }, { data: goals }, { data: taskAssignees }, { data: teamMembers }] = await Promise.all([
+    supabase.from('clients').select('*'),
+    supabase.from('tasks').select('*, client:clients(name), goal:goals(name)').not('status', 'in', '("Approved","Rejected")').order('due_date', { ascending: true, nullsFirst: false }),
+    supabase.from('goals').select('*'),
+    supabase.from('task_assignees').select('task_id, team_member_id'),
+    supabase.from('team_members').select('*'),
   ])
 
+  const memberMap = Object.fromEntries((teamMembers ?? []).map(m => [m.id, m]))
+  const tasks = (rawTasks ?? []).map(t => ({
+    ...t,
+    assignees: (taskAssignees ?? [])
+      .filter(ta => ta.task_id === t.id)
+      .map(ta => memberMap[ta.team_member_id])
+      .filter(Boolean),
+  }))
+
   const activeClients = (clients ?? []).filter(c => c.status === 'Active').length
-  const overdueCount = (tasks ?? []).filter(t => t.due_date && t.due_date < today).length
-  const dueTodayCount = (tasks ?? []).filter(t => t.due_date === today).length
+  const overdueCount = tasks.filter(t => t.due_date && t.due_date < today).length
+  const dueTodayCount = tasks.filter(t => t.due_date === today).length
+  const activeGoals = (goals ?? []).length
 
   return (
     <AppShell>
       <DashboardClient
-        stats={{ activeClients, totalClients: (clients ?? []).length, overdueCount, dueTodayCount, activeEngagements: (engagements ?? []).length }}
-        recentTasks={(tasks ?? []).slice(0, 8)}
+        stats={{ activeClients, totalClients: (clients ?? []).length, overdueCount, dueTodayCount, activeGoals }}
+        recentTasks={tasks.slice(0, 8)}
         today={today}
       />
     </AppShell>
