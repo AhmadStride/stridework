@@ -12,6 +12,10 @@ export const metadata: Metadata = {
   title: "StrideWork",
   description: "Client and task management",
   manifest: "/manifest.json",
+  icons: {
+    icon: "/logo-icon.png",
+    apple: "/logo-icon.png",
+  },
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
