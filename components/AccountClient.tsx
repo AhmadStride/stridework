@@ -34,14 +34,28 @@ export default function AccountClient({ email, fullName: initialName, avatarUrl:
     const file = e.target.files?.[0]
     if (!file) return
     setUploading(true)
-    const reader = new FileReader()
-    reader.onload = async ev => {
-      const dataUrl = ev.target?.result as string
+
+    // Resize to 128×128 before storing to keep metadata small
+    const img = new window.Image()
+    const objectUrl = URL.createObjectURL(file)
+    img.onload = async () => {
+      const SIZE = 128
+      const canvas = document.createElement('canvas')
+      canvas.width = SIZE
+      canvas.height = SIZE
+      const ctx = canvas.getContext('2d')!
+      // Crop to square from centre
+      const min = Math.min(img.width, img.height)
+      const sx = (img.width - min) / 2
+      const sy = (img.height - min) / 2
+      ctx.drawImage(img, sx, sy, min, min, 0, 0, SIZE, SIZE)
+      URL.revokeObjectURL(objectUrl)
+      const dataUrl = canvas.toDataURL('image/jpeg', 0.8)
       setAvatar(dataUrl)
       await supabase.auth.updateUser({ data: { avatar_url: dataUrl } })
       setUploading(false)
     }
-    reader.readAsDataURL(file)
+    img.src = objectUrl
   }
 
   async function saveProfile() {

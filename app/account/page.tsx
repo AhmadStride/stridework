@@ -9,7 +9,9 @@ export default async function AccountPage() {
   if (!user) redirect('/login')
 
   const fullName = (user.user_metadata?.full_name as string) ?? ''
-  const avatarUrl = (user.user_metadata?.avatar_url as string) ?? null
+  // Only pass avatar if it looks like a valid small data URL or http URL (guard against corrupt/huge values)
+  const rawAvatar = (user.user_metadata?.avatar_url as string) ?? null
+  const avatarUrl = rawAvatar && rawAvatar.length < 200_000 ? rawAvatar : null
 
   return (
     <AppShell>
