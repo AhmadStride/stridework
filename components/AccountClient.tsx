@@ -61,7 +61,7 @@ export default function AccountClient({ email, fullName: initialName, avatarUrl:
     <div className="max-w-lg mx-auto px-4 pt-8 pb-6 space-y-6">
       {/* Header */}
       <div>
-        <p className="text-xs text-gray-400 font-medium">StrideWorks</p>
+        <p className="text-xs text-gray-400 font-medium">Stridestack</p>
         <h1 className="text-2xl font-bold tracking-tight text-gray-900">Profile</h1>
       </div>
 

@@ -2,13 +2,13 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "StrideWorks",
+  title: "Stridestack",
   description: "Client and task management",
   manifest: "/manifest.json",
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
-    title: "StrideWorks",
+    title: "Stridestack",
   },
 };
 

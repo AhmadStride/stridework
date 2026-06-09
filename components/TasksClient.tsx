@@ -220,7 +220,7 @@ export default function TasksClient({ initialTasks, clients, teamMembers, curren
       {/* Header */}
       <div className="flex items-center justify-between mb-4">
         <div>
-          <p className="text-xs text-muted-foreground font-medium">StrideWorks</p>
+          <p className="text-xs text-muted-foreground font-medium">Stridestack</p>
           <h1 className="text-2xl font-bold tracking-tight">Tasks</h1>
           {overdueCount > 0 && <p className="text-xs text-red-500 font-semibold mt-0.5">{overdueCount} overdue</p>}
         </div>

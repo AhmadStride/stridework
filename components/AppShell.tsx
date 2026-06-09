@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import StridestackLogo from '@/components/StridestackLogo'
 
 const navItems = [
   {
@@ -63,8 +64,8 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       {/* ── Desktop sidebar ── */}
       <aside className="hidden lg:flex flex-col w-60 shrink-0 bg-white border-r border-gray-100 fixed inset-y-0 left-0 z-40">
         {/* Logo */}
-        <div className="px-6 py-5 border-b border-gray-100">
-          <span className="text-lg font-bold tracking-tight text-gray-900">StrideWorks</span>
+        <div className="px-5 py-4 border-b border-gray-100">
+          <StridestackLogo />
         </div>
 
         {/* Main nav */}
@@ -108,7 +109,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
         {/* Bottom branding */}
         <div className="px-6 py-4 border-t border-gray-100">
-          <p className="text-xs text-gray-400">© 2025 StrideWorks</p>
+          <p className="text-xs text-gray-400">© 2025 Stridestack</p>
         </div>
       </aside>
 

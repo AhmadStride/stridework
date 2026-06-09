@@ -48,7 +48,7 @@ export default function TeamClient({ initialMembers }: { initialMembers: TeamMem
     <div className="max-w-lg mx-auto px-4 pt-8 pb-4">
       <div className="flex items-center justify-between mb-5">
         <div>
-          <p className="text-xs text-muted-foreground font-medium">StrideWorks</p>
+          <p className="text-xs text-muted-foreground font-medium">Stridestack</p>
           <h1 className="text-2xl font-bold tracking-tight">Team</h1>
         </div>
         <Button size="sm" onClick={openAdd}>
