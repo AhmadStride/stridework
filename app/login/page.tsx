@@ -29,10 +29,8 @@ export default function LoginPage() {
     <div className="min-h-screen flex items-center justify-center bg-background px-4">
       <div className="w-full max-w-sm">
         <div className="text-center mb-8">
-          <div className="flex items-center justify-center gap-2.5 mb-2">
-            <Image src="/logo-icon.png" alt="StrideWork" width={36} height={36} className="shrink-0" />
-            <span className="text-2xl font-black tracking-tight text-gray-950" style={{ letterSpacing: '-0.02em' }}>StrideWork</span>
-          </div>
+          <Image src="/logo-icon.png" alt="StrideWork" width={52} height={52} className="mx-auto mb-3" />
+          <h1 className="text-4xl font-black uppercase tracking-tight text-gray-950" style={{ letterSpacing: '-0.02em' }}>STRIDEWORK</h1>
           <p className="text-sm text-muted-foreground mt-2">Sign in to your workspace</p>
         </div>
 
