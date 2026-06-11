@@ -77,6 +77,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
               <Link
                 key={item.href}
                 href={item.href}
+                prefetch={true}
                 className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
                   isActive ? 'bg-gray-100 text-gray-900' : 'text-gray-500 hover:bg-gray-50 hover:text-gray-800'
                 }`}
@@ -95,6 +96,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                 <Link
                   key={item.href}
                   href={item.href}
+                  prefetch={true}
                   className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
                     isActive ? 'bg-gray-100 text-gray-900' : 'text-gray-500 hover:bg-gray-50 hover:text-gray-800'
                   }`}
@@ -138,7 +140,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           {navItems.map(item => {
             const isActive = item.href === '/' ? pathname === '/' : pathname.startsWith(item.href)
             return (
-              <Link key={item.href} href={item.href} className="flex flex-col items-center gap-1 flex-1 py-3">
+              <Link key={item.href} href={item.href} prefetch={true} className="flex flex-col items-center gap-1 flex-1 py-3">
                 {item.icon(isActive)}
                 <span className={`text-[9px] font-semibold ${isActive ? 'text-gray-900' : 'text-gray-400'}`}>
                   {item.label}
